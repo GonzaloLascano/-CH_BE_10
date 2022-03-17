@@ -1,0 +1,33 @@
+  <div class="d-flex flex-column justify-content-around container-sm my-5 p-4 shadow rounded-3">
+      <h2 class="my-3 border-bottom ">Tabla de Productos Listados</h2>
+      <% if(products.length !== 0) { %>
+      <table class="table table-striped my-4">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Thumbnail</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% for (const indice in products) { %>
+          <tr>
+            <th scope="row"><%= products[indice].id %></th>
+            <td><%= products[indice].title %></td>
+            <td>$ <%= products[indice].price %></td>
+            <td><img src=<%= products[indice].thumbnail %> width="56"></td>
+          </tr>
+        <% } %>  
+        </tbody>
+      </table>
+      <% } else {%>
+      <h5 class="alert alert-dark">Ups :( no se encontrar productos!</h5>
+      <% } %>
+      <hr>
+      <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='/';">Volver al Formulario</button>
+    </div>
+
+    
+    
+    

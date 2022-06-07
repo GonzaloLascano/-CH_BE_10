@@ -1,4 +1,4 @@
-const express = require('express') //se llama al modulo de express
+const express = require('express') //se llama al modulo de express y se instancia
 const app = express()
 
 //variable para que los productos almacenados permanezcan en memoria.
@@ -11,7 +11,7 @@ const server = app.listen(PORT, () =>{
 })
 server.on('error', (error) => console.log({mensaje: `hubo un error :( ${error}`}))
 
-//parseado automatico 
+//parseado "automatico" 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -22,7 +22,7 @@ app.set("views", "./views")
 
 /* ------------------------------------------------- */
 
-/* se definen metodos de renderizado */
+/* se definen endpoints con metodos de renderizado */
 app.get('/productos', (req, res) => {
     res.render('lista.pug', {products: products})
 })

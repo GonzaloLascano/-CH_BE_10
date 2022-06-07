@@ -1,9 +1,9 @@
-const express = require('express') //se llama al modulo de express
+const express = require('express') //se llama al modulo de express y se instancia
 const handlebars = require('express-handlebars')
 const app = express()
 
 //variable para que los productos almacenados permanezcan en memoria.
-let products = [/* {id: 1, title: 'cortina', price: 54, thumbnail:'url'}, {id: 2, title: 'cortina', price: 54, thumbnail:'url'}, {id: 3, title: 'cortina', price: 54, thumbnail:'url'} */]
+let products = []
 
 // Se crea el servidor, se elige el numero de puerto.
 const PORT = 8080
@@ -30,7 +30,7 @@ app.set("views", "./views")
 
 /* ------------------------------------------------- */
 
-/* se definen metodos de renderizado */
+/* se definen endpoints con metodos de renderizado */
 app.get('/productos', (req, res) => {
     res.render('lista', {products})
 })
@@ -42,6 +42,7 @@ app.get('/', (req, res) => {
 app.post('/productos', (req, res) => {
     let newProduct = req.body
     newProduct = {...newProduct, id: (products.length === 0 ? 1 : (products[products.length - 1].id + 1))}
+    newProduct.price = parseInt(newProduct.price)
     console.log(newProduct)
     products.push(newProduct)
     res.render('formulario')

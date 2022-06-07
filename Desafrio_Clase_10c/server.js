@@ -23,7 +23,7 @@ app.set("view engine", 'ejs')
 
 /* ------------------------------------------------- */
 
-/* se definen metodos de renderizado */
+/* se definen endpoints con metodos de renderizado */
 app.get('/productos', (req, res) => {
     res.render('index', {products: products, formulario: false})
 })
